@@ -1,11 +1,9 @@
-# Use official Tomcat 9 image
-FROM tomcat:9.0
+FROM tomcat:10.1.18-jdk17
 
-# Remove default apps
+# Clean default apps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your WAR file as the ROOT app
-COPY currency-converter.war /usr/local/tomcat/webapps/ROOT.war
+# Copy your WAR or app folder
+COPY . /usr/local/tomcat/webapps/currencyconverterproject
 
-# Expose port 8080 (Render uses this)
 EXPOSE 8080
